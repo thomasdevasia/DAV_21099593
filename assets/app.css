@@ -1,0 +1,56 @@
+body{
+    font-family: "Times New Roman", sans-serif;
+    /* background-color: lightblue; */
+    margin: 0;
+    /* background-color:aliceblue; */
+}
+
+.heading{
+    text-align: center;
+    margin: 0 0 1rem;
+    /* border-style: solid;
+    border-width: 0 0 0.001rem 0; */
+    box-shadow: rgb(162 177 198) 0px 5px 8px -6px;
+    padding: 0.5rem;
+    color: cornflowerblue;
+}
+.heading h1{
+    margin: 0.5rem 0;
+    color: cornflowerblue;
+}
+
+h2, h4, ul, p{
+    margin: 0;
+}
+
+#tabGroup-parent{
+    margin: 0rem 1.5rem;
+}
+
+.subHeading{
+    margin: 1rem 0.5rem;
+}
+
+.subHeading h2{
+    padding: 0 0 0.5rem;
+}
+
+.subHeading span{
+    color: red;
+}
+
+.insight{
+    margin: 1rem 0.5rem;
+    border-color: #2196F3;
+    border-left-style: solid;
+    border-left-width: 0.5rem;
+    background-color: #ddffff;
+    padding: 1rem
+}
+
+#histogram-plot, #scatter-plot{
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 2px rgb(0 0 0 / 24%);
+    border-radius: 10px;
+}

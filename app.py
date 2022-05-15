@@ -78,9 +78,29 @@ df['count'] = countArr
 
 # scatter graph
 scatter_fig = px.scatter(df, x='prizeYear', y='count', color='gender', hover_name='name')
+scatter_fig.update_layout(
+    xaxis_title="Years",
+    yaxis_title="Count",
+    legend_title="Gender",
+    font=dict(
+        family="Courier New, monospace",
+        size=14,
+        color="RebeccaPurple"
+    )
+)
 
 # histogram graph
 histogram_fig = px.histogram(df, x='prizeCategory', color='gender')
+histogram_fig.update_layout(
+    xaxis_title="Prize Category",
+    yaxis_title="Count",
+    legend_title="Gender",
+    font=dict(
+        family="Courier New, monospace",
+        size=14,
+        color="RebeccaPurple"
+    )
+)
 
 # preparing cummulative data
 male = df[df['gender']=='male']
@@ -125,6 +145,17 @@ line_fig.add_trace(go.Scatter(x=maleYear, y=maleCummSum, name='Male'))
 line_fig.add_trace(go.Scatter(x=femaleYear, y=femaleCummSum, name='Female'))
 line_fig.add_trace(go.Scatter(x=orgYear, y=orgCummSum, name='Org'))
 
+line_fig.update_layout(
+    xaxis_title="Years",
+    yaxis_title="Count",
+    legend_title="Gender",
+    font=dict(
+        family="Courier New, monospace",
+        size=14,
+        color="RebeccaPurple"
+    )
+)
+
 
 # default
 tab1_fig = scatter_fig
@@ -134,7 +165,7 @@ fp = (len(df[df['gender']=='female'])/len(df))*100
 
 app.layout = html.Div(children=[
     
-    html.Div(children=[
+    html.Div(className='heading',children=[
         html.H1(children='Noble Laueretes'),
         html.P(children='A Quick Look at Nobel Prize winners till now')
     ]),
@@ -143,7 +174,7 @@ app.layout = html.Div(children=[
         dcc.Tab(
             label='Over the Years',
             children=[
-                html.Div(children=[
+                html.Div(className='subHeading',children=[
                     html.H2(children='Winners over the Years based on Gender'),
                     html.P(children=[
                         html.Span(children='*'),
@@ -151,7 +182,7 @@ app.layout = html.Div(children=[
                         ])
                 ]),
 
-                html.Div(children=[
+                html.Div(className='insight',children=[
                     html.H4(children='Few Insights:'), 
                     html.Ul(children=[
                         html.Li(children=f'Only {str(fp)[:4]}% of winners are women!'),
@@ -162,20 +193,20 @@ app.layout = html.Div(children=[
                     
                 ]),
 
-                dcc.Dropdown(['Normal','Cummulative'], 'Normal', id='tab1_dropDown'),
-
-                dcc.Graph(
-                    id='tab1-grpah',
-                    figure=tab1_fig
-                )
-
+                html.Div(id='scatter-plot',children=[
+                    dcc.Dropdown(['Normal','Cummulative'], 'Normal', id='tab1_dropDown'),
+                    dcc.Graph(
+                        id='tab1-grpah',
+                        figure=tab1_fig
+                    )
+                ]),
 
             ]
         ),
         dcc.Tab(
             label='In different Categories',
             children=[
-                html.Div(children=[
+                html.Div(className='subHeading',children=[
                     html.H2(children='Winners in different Categories based on Gender'),
                     html.P(children=[
                         html.Span(children='*'),
@@ -183,10 +214,10 @@ app.layout = html.Div(children=[
                         ])
                 ]),
 
-                html.Div(children=[
+                html.Div(className='insight',children=[
                     html.H4(children='Few Insights:'), 
                     html.Ul(children=[
-                        html.Li(children='The Physics and the Economics Prices has only 2% women Winners.'),
+                        html.Li(children='The Physics and the Economics Prizes has only 2% women Winners.'),
                         html.Li(children='There are 224 Nobel Prize winners for Medicine')
                     ])
                     
@@ -221,7 +252,5 @@ def updateGraph(value):
 
 if __name__ == '__main__':
     
-    app.run_server(debug=True)
-
-
+    app.run_server(debug=True) 
     
