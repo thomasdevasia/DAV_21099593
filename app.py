@@ -77,10 +77,10 @@ for i in range(len(df)):
 df['count'] = countArr
 
 # scatter graph
-scatter_fig = px.scatter(df, x='prizeYear', y='count', color='gender', hover_name='name')
+scatter_fig = px.scatter(df, x='prizeYear', y='count', color='gender', symbol='gender', hover_name='name')
 scatter_fig.update_layout(
     xaxis_title="Years",
-    yaxis_title="Count",
+    yaxis_title="Number of Winners",
     legend_title="Gender",
     font=dict(
         family="Courier New, monospace",
@@ -93,7 +93,7 @@ scatter_fig.update_layout(
 histogram_fig = px.histogram(df, x='prizeCategory', color='gender')
 histogram_fig.update_layout(
     xaxis_title="Prize Category",
-    yaxis_title="Count",
+    yaxis_title="Number of Winners",
     legend_title="Gender",
     font=dict(
         family="Courier New, monospace",
@@ -147,7 +147,7 @@ line_fig.add_trace(go.Scatter(x=orgYear, y=orgCummSum, name='Org'))
 
 line_fig.update_layout(
     xaxis_title="Years",
-    yaxis_title="Count",
+    yaxis_title="Number of Winners",
     legend_title="Gender",
     font=dict(
         family="Courier New, monospace",
@@ -167,7 +167,7 @@ app.layout = html.Div(children=[
     
     html.Div(className='heading',children=[
         html.H1(children='Noble Laueretes'),
-        html.P(children='A Quick Look at Nobel Prize winners till now')
+        html.P(children='A Quick Look at Nobel Prize winners till now based on Gender')
     ]),
 
     dcc.Tabs(id='tabGroup',children=[
@@ -194,7 +194,7 @@ app.layout = html.Div(children=[
                 ]),
 
                 html.Div(id='scatter-plot',children=[
-                    dcc.Dropdown(['Normal','Cummulative'], 'Normal', id='tab1_dropDown'),
+                    dcc.Dropdown(['Normal','Cumulative'], 'Normal', id='tab1_dropDown'),
                     dcc.Graph(
                         id='tab1-grpah',
                         figure=tab1_fig
@@ -252,5 +252,5 @@ def updateGraph(value):
 
 if __name__ == '__main__':
     
-    app.run_server(debug=True, port=8050) 
+    app.run_server(debug=False, port=8050) 
     

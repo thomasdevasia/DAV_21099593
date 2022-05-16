@@ -2,7 +2,7 @@ body{
     font-family: "Times New Roman", sans-serif;
     /* background-color: lightblue; */
     margin: 0;
-    /* background-color:aliceblue; */
+    background-color:aliceblue;
 }
 
 .heading{
@@ -16,7 +16,7 @@ body{
 }
 .heading h1{
     margin: 0.5rem 0;
-    color: cornflowerblue;
+    color: rgb(29, 70, 147);
 }
 
 h2, h4, ul, p{
