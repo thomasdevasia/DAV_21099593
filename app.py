@@ -24,7 +24,7 @@ file.close()
 # laureates = result.json()['laureates']
 
 # result = requests.get('http://api.nobelprize.org/v1/country.json')
-# country = result.json()
+# country = result.json()['countries']
 
 
 # making it into a dataframe

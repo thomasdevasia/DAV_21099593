@@ -16,4 +16,4 @@ To run the server change your present working directory to this folder then run 
 
 Do make a note that the server starts at port 8050 by default. To change the port incase 8050 is already in use, locate app.py and change following line of code.
 
-    app.run_server(debug=True, port={Desired Port}) 
+    app.run_server(debug=True, port={Desired Port Number}) 
